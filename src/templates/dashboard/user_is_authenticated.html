@@ -32,7 +32,7 @@
 					</li>
 
 					<li>	
-							<a href="{% url 'track_shipment-URL' %}" data-toggle="modal" >
+							{% comment %} <a href="{% url 'track_shipment-URL' %}" data-toggle="modal" > {% endcomment %}
 								<span class="fa fa-truck" aria-hidden="true"></span>Track Shipments</a>
 					</li>
 
@@ -44,7 +44,7 @@
 							<span class="fa fa-unlock-alt" aria-hidden="true"></span> Change Password </a>
 					</li> 
 
-					{% comment %} <li>
+					{% comment %}<li>
 						<a href="{% url 'cart-URL' %}">
 							<span class="fa fa-pencil-square-o" aria-hidden="true"></span> Chart </a>
 					</li>  {% endcomment %}
@@ -60,7 +60,7 @@
 					</li> 	 {% endcomment %}
 
 					<li>
-						<a href="{% url 'logout-URL'  %}">
+						{% comment %} <a href="{% url 'logout-URL'  %}"> {% endcomment %}
                         <a class="nav-link active" aria-current="page" href="/logout/">Logout</a>
                     </li>
 
@@ -69,7 +69,8 @@
 {% comment %} ================================================================================== {% endcomment %}
 				<!-- search -->
 				<div class="agileits_search">
-					<form action="{% url 'search_product-URL' %}" method="post">
+					<form action="#" method="post">
+					{% comment %} <form action="{% url 'search_product-URL' %}" method="post"> {% endcomment %}
 						{% csrf_token %}
 						<input name="search" type="search" placeholder="Search Product">
 						<button type="submit" class="btn btn-default" aria-label="Left Align">

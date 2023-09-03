@@ -1,7 +1,6 @@
 from django.db import models
-from order.models import *
+from order_orderdetail.models import *
 from django.contrib.auth.models import User # إستيراد اسم المستخدم
-from django.utils.timezone import now
 
 class CheckoutDetail_MODEL(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, db_constraint=False,null=True , blank=True)
@@ -13,8 +12,7 @@ class CheckoutDetail_MODEL(models.Model):
     state = models.CharField(max_length=100, blank=True, null=True)
     zipcode = models.CharField(max_length=100, blank=True, null=True)
     payment = models.CharField(max_length=100, blank=True, null=True)
-    date_added_now = models.DateTimeField(default=now())
-    # date_added_auto= models.DateTimeField(auto_now_add=True)     
+    date_added_auto= models.DateTimeField(auto_now_add=True)     
 
     # 'admin'display the field name on a page
     # \: write code of more than 1 line in the Python interpreter

@@ -24,9 +24,8 @@
 <div class="container">
   <div id="loginbox" style="margin-top:5px;" class="mainbox col-md-8  col-md-offset-2  col-sm-8 col-sm-offset-2">                    
 
-  {% comment %} <form method="POST" action="{% url 'signup-URL' %}" id="signupform" class="form-horizontal" role="form"> {% endcomment %}
+  <form method="POST" action="{% url 'signup-URL' %}" id="signupform" class="form-horizontal" role="form">
 
-  <form class="well form-horizontal" action="{% url 'signup-URL' %} " method="POST"  id="signup_form">
     {% csrf_token %}
 
 <fieldset>

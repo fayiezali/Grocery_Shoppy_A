@@ -42,10 +42,8 @@
         </div>
         <div class="col-lg-12">
             <div class="box-element" id="form-wrapper">
-              {% comment %} <form  method="POST" action="{% url 'checkout-URL' %}"> {% endcomment %}
-
-                <form method="POST"> 
-                  {% csrf_token %}
+              <form  method="POST" action="{% url 'checkout_confirm-URL' %}">
+                {% csrf_token %}
                     <div id="shipping-info">
                         <hr>
                         <div class="">
@@ -71,7 +69,7 @@
                         </div>
                     </div>
                     <br>
-                    <input type="submit" value="Checkout" id="form-button" class="btn btn-success">
+                    <input type="submit" value="Confirm" id="form-button" class="btn btn-success">
                 </form>
             </div>
             <hr>

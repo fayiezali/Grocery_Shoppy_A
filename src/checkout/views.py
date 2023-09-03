@@ -34,8 +34,41 @@ from .models import *
 #                 'total_VAR':total_VAR,
 #             }
 #             return render(request, "checkout/checkout.html", context)
-
 def checkout_DEF(request):
+    context = None # Set the value of the variable to nothing
+    # trying to check if the user is authenticated and not anonymous.
+    # if request.user.is_authenticated \
+        # and not request.user.is_anonymous:
+        # select all orders that the user is currently viewing and filter them to only show those that are not yet finished.
+    if OrderMODEL.objects.all().filter(
+            order_user= request.user ,
+            order_is_finished=False):
+            #  The code is trying to get the order that is finished.
+            #  It does this by getting the OrderMODEL object and then checking if it has an attribute called "is_finished".
+            #  If it doesn't have that attribute, then it will set its value to False.
+            #  The code would result in an instance of the OrderMODEL class being retrieved for the user with id request.user .
+            #  The order_is_finished attribute is set to False, meaning that this particular instance of the OrderMODEL class has not been finished yet.
+            order_VAR = OrderMODEL.objects.get(
+                order_user=request.user , 
+                order_is_finished=False)
+            OrderDetails_VAR = OrderDetailsMODEL.objects.all().filter(OrderDetails_order=order_VAR)
+            total_VAR = 0
+            # The iterative loop goes  all products
+            for sub in OrderDetails_VAR:
+                # Calculation multiply the price of the product by the quantity
+                total_VAR += sub.OrderDetails_price * sub.OrderDetails_quantity
+            # Send context To Cart.html Page
+            context = {
+                'order_VAR':order_VAR,
+                'OrderDetails_VAR':OrderDetails_VAR,
+                'total_VAR':total_VAR,
+            }
+            return render(request, "checkout/checkout.html", context)
+
+
+
+
+def checkout_confirm_DEF(request):
     context   = None # Set the value of the variable to nothing
     total_VAR = None     # Clear the variable data
     address_VAR= request.POST.get('address')

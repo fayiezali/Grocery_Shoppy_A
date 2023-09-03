@@ -1,6 +1,6 @@
 from django.shortcuts import render , redirect
 from django.contrib.auth.decorators import login_required
-from order.models import *
+from product.models import *
 
 
 # The Condition For Seeing The Required Page Login
@@ -26,8 +26,8 @@ def dashboard_DEF(request):
 
 
 
-def product_detail_DEF(request, product_id):
-    products_details_VAR=ProductMODEL.objects.get(id=product_id)
-    context={'products_details_VAR':products_details_VAR}
-    return render(request,"orders/product_details.html",context)
+# def product_detail_DEF(request, product_id):
+#     products_details_VAR=ProductMODEL.objects.get(id=product_id)
+#     context={'products_details_VAR':products_details_VAR}
+#     return render(request,"orders/product_details.html",context)
 
