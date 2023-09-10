@@ -34,7 +34,7 @@
 			<div class="side-bar col-md-3">
 				<div class="search-hotel">
 					<h3 class="agileits-sear-head">Search Here..</h3>
-					<form action="{% url 'search_product-URL' %}" method="post" novalidate>
+					<form action="{% url 'search_product-URL' %}" method="POST" novalidate>
                         {% csrf_token %}
 						<input type="search" placeholder="Search Product" name="search" >
 						<input type="submit">

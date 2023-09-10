@@ -48,10 +48,11 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'product',
     'cart', 
+    'track_shipment',
     'order_orderdetail',
-    # 'search',
+    'search',
     'checkout',
-    # 'track_shipment',
+    'order',
     # 'tax',
 ]
 

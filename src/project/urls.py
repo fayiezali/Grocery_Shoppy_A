@@ -30,9 +30,9 @@ urlpatterns = [
     path('', include('product.urls')),  
     path('', include('cart.urls')),  
     path('', include('checkout.urls')),
-
-    # path('', include('search.urls')), 
-    # path('', include('track_shipment.urls')),  
+    path('', include('search.urls')), 
+    path('', include('track_shipment.urls')),  
+ 
     # path('', include('tax.urls')),  
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

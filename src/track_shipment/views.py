@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import *
-from order. models import *
+from order_orderdetail. models import *
 from track_shipment. models import *
 from django.contrib import messages
 from django.contrib.auth.models import User
