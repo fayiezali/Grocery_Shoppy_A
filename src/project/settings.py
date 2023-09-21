@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'order_orderdetail',
     'search',
     'checkout',
-    'order',
     # 'tax',
 ]
 

@@ -15,25 +15,48 @@ class OrderMODEL(models.Model):
         ordering = ('-order_order_date',)
         verbose_name = "Order"
         verbose_name_plural = "Orders" 
-
+    #
     # 'admin'display the field name on a page
     # \: write code of more than 1 line in the Python interpreter
     def __str__(self):
         return  'User Name: ' + self.order_user.username + '-' \
                 'Order Id: ' + str(self.id) 
+    #
+    def __str__(self):
+        return   str(self.id) 
+    #
+    @property
+    def get_order_number_PROPERTY(self):
+        order_number_VAR=0
+        order_number_VAR = self.orderdetailsmodel_set.all()
+        for sub in order_number_VAR:
+            # 
+            return sub.OrderDetails_order.id
+    #
+    @property
+    def get_count_of_items_PROPERTY(self):
+        orderitems = self.orderdetailsmodel_set.all().count
+        # total = sum([item.OrderDetails_product for item in orderitems])
+        return orderitems
+    # 
+    @property
+    def get_quantity_of_products_PROPERTY(self):
+        orderitems = self.orderdetailsmodel_set.all()
+        total = sum([item.OrderDetails_quantity for item in orderitems])
+        return total
+    #
+    @property
+    def get_cart_total_PROPERTY(self):
+        total_VAR=0
+        orderitems = self.orderdetailsmodel_set.all()
+        for sub in orderitems:
+            # Calculation multiply the price of the product by the quantity
+            total_VAR += sub.OrderDetails_price * sub.OrderDetails_quantity
+        return total_VAR
+
+
+# 
 #
-#
-#
-
-
-
-
-
-
-
-
-
-
 class OrderDetailsMODEL(models.Model):
     OrderDetails_product  = models.ForeignKey(ProductMODEL , on_delete = models.CASCADE)
     OrderDetails_order    = models.ForeignKey(OrderMODEL   , on_delete = models.CASCADE)
@@ -50,30 +73,3 @@ class OrderDetailsMODEL(models.Model):
         return  'User Name : ' + str(self.OrderDetails_order.order_user) + ' - ' +\
                 'Product: ' + self.OrderDetails_product.product_name + ' - ' +\
                 'Order Id: ' + str(self.OrderDetails_order.id)
-
-from django.db import models
-from .models import *
-from django.contrib.auth.models import User # إستيراد اسم المستخدم
-from django.utils.timezone import now
-
-
-# class ShipmentTrackMODEL(models.Model):
-#     shipment_track_user              = models.ForeignKey(User , on_delete = models.CASCADE)
-#     shipment_track_order_id          = models.ForeignKey(OrderMODEL, on_delete=models.CASCADE)
-#     shipment_track_confirmed_order   = models.BooleanField(default=False)
-#     shipment_track_Processing_order  = models.BooleanField(default=False)
-#     shipment_track_dispatch_product  = models.BooleanField(default=False)
-#     shipment_track_delivery          = models.BooleanField(default=False)
-#     shipment_track_Product_delivered = models.BooleanField(default=False)
-    
-#     class Meta: 
-#         ordering = ('-shipment_track_order_id',)
-#         verbose_name = "Shipment Track"
-#         verbose_name_plural = "Shipment Tracs" 
-
-#     # 'admin'display the field name on a page
-#     # \: write code of more than 1 line in the Python interpreter
-#     def __str__(self):
-#         return  'User Name: ' + self.shipment_track_user.username + '-' \
-#                 'Order ID: ' + str(self.shipment_track_order_id) 
-# #

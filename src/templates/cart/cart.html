@@ -107,11 +107,17 @@ line.OrderDetails_product.product_image:
 				<div class="checkout-left-basket">
 					<h4> Checkout </h4>
 					<ul>
-						<li>Order Number <i>-</i> <span>( {{ order_VAR.id }} )</span></li>
-						<li>Number Of Products <i>-</i> <span>( {{OrderDetails_VAR.count}} )</span></li>
-						<li>Total <i>-</i> <span>SR ( {{ total_VAR}} )</span></li>
+
+						<li>Order Number        :<span>( {{order_VAR.get_order_number_PROPERTY}} )</span></li>
+						<li>Count Of Items      :<span>( {{order_VAR.get_count_of_items_PROPERTY}} )</span></li>
+						<li>Quantity Of Products:<span>( {{order_VAR.get_quantity_of_products_PROPERTY}} )</span></li>
+						<li>Cart Total          :<span>( {{order_VAR.get_cart_total_PROPERTY}} )</span></li>
 						{% comment %} <li> Tax (15% ) <i>-</i> <span>SR ( 00 )</span></li> {% endcomment %}
 						{% comment %} <li>Total Service Charges <i>-</i> <span>SR ( 15.00 )</span></li> {% endcomment %}
+
+						{% comment %} <li>Order Number               <i>-</i> <span>( {{ order_VAR.id }} )</span></li> {% endcomment %}
+						{% comment %} <li> The Number Of Items 			 <i>-</i> <span>( {{OrderDetails_VAR.count}} )</span></li> {% endcomment %}
+						{% comment %} <li>Total <i>-</i> <span>SR ( {{ total_VAR}} )</span></li> {% endcomment %}
 					</ul>
 				</div>
 				<div class="checkout-right-basket">

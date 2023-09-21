@@ -34,10 +34,13 @@ def cart_DEF(request):
                 # Calculation multiply the price of the product by the quantity
                 total_VAR += sub.OrderDetails_price * sub.OrderDetails_quantity
             # Send context To Cart.html Page
+            
+            
             context = {
                 'order_VAR':order_VAR,
                 'OrderDetails_VAR':OrderDetails_VAR,
                 'total_VAR':total_VAR,
+
             }
     return render (request , 'cart/cart.html' ,  context) # Go To Cart Page
 #
@@ -188,21 +191,3 @@ def reduce_quantity_product_in_cart_DEF(request , orderdetails_id):
 #
 #
 #
-
-# def product_details_DEF(request, product_id):
-#         products_details_VAR = ProductMODEL.objects.get(id=product_id)
-#         print(products_details_VAR)
-#         return render(request, "orders/product_details.html", {'products_details_VAR':products_details_VAR})
-
-
-
-
-# def product_view(request, myid):
-#     product = ProductMODEL.objects.filter(id=myid).first()
-
-#     if request.method=="POST":
-
-#         return redirect('product_view')
-#         # return redirect(f"/product_view/{product.id}")
-#     return render(request, "orders/product_view.html", {'product':product})
-
