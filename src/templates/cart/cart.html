@@ -107,15 +107,16 @@ line.OrderDetails_product.product_image:
 				<div class="checkout-left-basket">
 					<h4> Checkout </h4>
 					<ul>
-
-						<li>Order Number        :<span>( {{order_VAR.get_order_number_PROPERTY}} )</span></li>
-						<li>Count Of Items      :<span>( {{order_VAR.get_count_of_items_PROPERTY}} )</span></li>
-						<li>Quantity Of Products:<span>( {{order_VAR.get_quantity_of_products_PROPERTY}} )</span></li>
-						<li>Cart Total          :<span>( {{order_VAR.get_cart_total_PROPERTY}} )</span></li>
-						{% comment %} <li> Tax (15% ) <i>-</i> <span>SR ( 00 )</span></li> {% endcomment %}
+						<li>Order Number               :<span>( {{order_VAR.get_order_number_PROPERTY}}            )</span></li>
+						<li>Count Of Items             :<span>( {{order_VAR.get_count_of_items_PROPERTY}}          )</span></li>
+						<li>Quantity Of Products       :<span>( {{order_VAR.get_quantity_of_products_PROPERTY}}    )</span></li>
+						<li>Tax              		   :<span>( % {{tax_rate_VAR.get_tax_rate_PROPERTY}}           )</span></li>
+						<li>Subtotal (Witheout VAT/Tax):<span>( {{order_VAR.get_subtotal_without_tax_PROPERTY}}    )</span></li>
+						<li>Tax Amount - SR            :<span>( {{tax_rate_VAR.get_tax_amount_PROPERTY}}               )</span></li>
+						<li>Total Service Charges - SR :<span>( 30.00                                              )</span></li>
+						<li>GrandTotal (Withe VAT/Tax) :<span>( {{tax_rate_VAR.get_grandtotal_withe_tax_PROPERTY}} )</span></li>
 						{% comment %} <li>Total Service Charges <i>-</i> <span>SR ( 15.00 )</span></li> {% endcomment %}
-
-						{% comment %} <li>Order Number               <i>-</i> <span>( {{ order_VAR.id }} )</span></li> {% endcomment %}
+						{% comment %} <li>Order Number               <i>-</i> <span pan>( {{ order_VAR.id }} )</span></li> {% endcomment %}
 						{% comment %} <li> The Number Of Items 			 <i>-</i> <span>( {{OrderDetails_VAR.count}} )</span></li> {% endcomment %}
 						{% comment %} <li>Total <i>-</i> <span>SR ( {{ total_VAR}} )</span></li> {% endcomment %}
 					</ul>

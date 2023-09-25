@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from product. models      import *
 from order_orderdetail. models import *
+from tax. models      import *
+
 #
 #
 #
@@ -33,13 +35,15 @@ def cart_DEF(request):
             for sub in OrderDetails_VAR:
                 # Calculation multiply the price of the product by the quantity
                 total_VAR += sub.OrderDetails_price * sub.OrderDetails_quantity
+            #
+            # tax_rate_VAR = Tax_MODEL.objects.all() 
+            tax_rate_VAR = Tax_MODEL.objects.get()
             # Send context To Cart.html Page
-            
-            
             context = {
-                'order_VAR':order_VAR,
+                'order_VAR':order_VAR, # Get Da
                 'OrderDetails_VAR':OrderDetails_VAR,
                 'total_VAR':total_VAR,
+                'tax_rate_VAR':tax_rate_VAR,
 
             }
     return render (request , 'cart/cart.html' ,  context) # Go To Cart Page

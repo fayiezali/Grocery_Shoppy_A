@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'order_orderdetail',
     'search',
     'checkout',
-    # 'tax',
+    'tax',  
 ]
 
 MIDDLEWARE = [

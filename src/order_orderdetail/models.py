@@ -2,7 +2,7 @@ from django.db import models
 from .models import *
 from product.models import *
 from track_shipment.models import *
-from decimal import Decimal
+# from decimal import Decimal
 from django.contrib.auth.models import User # إستيراد اسم المستخدم
 #
 #
@@ -46,7 +46,7 @@ class OrderMODEL(models.Model):
         return total
     #
     @property
-    def get_cart_total_PROPERTY(self):
+    def get_subtotal_without_tax_PROPERTY(self):
         total_VAR=0
         orderitems = self.orderdetailsmodel_set.all()
         for sub in orderitems:
