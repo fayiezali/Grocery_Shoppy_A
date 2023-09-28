@@ -25,6 +25,24 @@ class OrderMODEL(models.Model):
     def __str__(self):
         return   str(self.id) 
     #
+    #
+    # @property
+    # def get_current_user_PROPERTY(self): # 
+    #     current_user_VAR=0
+    #     current_user_VAR = str(self.order_user) 
+    #     return current_user_VAR
+
+    # # #
+    # # #
+    # @property
+    # def get_current_order_PROPERTY(self): # 
+    #     current_order_VAR=0
+    #     current_order_VAR = self.orderdetailsmodel_set.all()
+    #     for order in current_order_VAR:
+    #         # 
+    #         return order.OrderDetails_order.id
+    # #
+    #
     @property
     def get_order_number_PROPERTY(self):
         order_number_VAR=0
