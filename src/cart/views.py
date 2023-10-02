@@ -38,6 +38,15 @@ def cart_DEF(request):
             #
             # tax_rate_VAR = Tax_MODEL.objects.all() 
             tax_rate_VAR = Tax_MODEL.objects.get()
+            # 
+            # ============================================================================
+            # Save User Name & Order Number In Table:Tax_MODER
+            Tax_MODEL.objects.update(
+                                    tax_user  = request.user  , # User 
+                                    tax_order = order_VAR   # Order No
+                                    )     
+            # ============================================================================
+
             # Send context To Cart.html Page
             context = {
                 'order_VAR':order_VAR, # Get Da

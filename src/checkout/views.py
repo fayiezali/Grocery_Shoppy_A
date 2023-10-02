@@ -93,11 +93,10 @@ def checkout_confirm_DEF(request):
         # Save User Name & Order ID & Confirm'True' In  Table ShipmentTrack
         order_VAR = OrderMODEL.objects.filter(order_user=request.user,order_is_finished=True).first() # Get Order ID
         ShipmentTrackMODEL_VAR = ShipmentTrackMODEL() # Order tracking table
-        ShipmentTrackMODEL_VAR.shipment_track_user = request.user # User
         ShipmentTrackMODEL_VAR.shipment_track_order_id = order_VAR.id # Order ID
         ShipmentTrackMODEL_VAR.shipment_track_confirmed_order = True
         ShipmentTrackMODEL_VAR.save() # Save Data
-# ============================================================================
+        # ============================================================================
         # Get All Products and Save In Variable
         products_all_VAR = ProductMODEL.objects.all()
 

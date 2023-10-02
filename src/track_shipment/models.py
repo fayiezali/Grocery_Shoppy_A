@@ -8,17 +8,17 @@ from django.db.models.signals import post_save , post_delete # كلاس فكرت
 
 
 class ShipmentTrackMODEL(models.Model):
-    shipment_track_user              = models.OneToOneField(User       , on_delete = models.CASCADE , null=True, blank=True)
+    shipment_track_user              = models.OneToOneField(User, on_delete = models.SET_NULL , null=True, blank=True)
     shipment_track_order_id          = models.CharField(max_length=10, default='', null=True, blank=True)
-
-    # shipment_track_user              = models.ForeignKey(User , on_delete = models.CASCADE)
-    # shipment_track_order_id          = models.ForeignKey(OrderMODEL, on_delete=models.CASCADE, null=True, blank=True)
-    # shipment_track_order_id          = models.ForeignKey(OrderMODEL, on_delete=models.CASCADE)
     shipment_track_confirmed_order   = models.BooleanField(default=False)
     shipment_track_Processing_order  = models.BooleanField(default=False)
     shipment_track_dispatch_product  = models.BooleanField(default=False)
     shipment_track_delivery          = models.BooleanField(default=False)
     shipment_track_Product_delivered = models.BooleanField(default=False)
+    # shipment_track_user              = models.ForeignKey(User , on_delete = models.CASCADE)
+    # shipment_track_order_id          = models.ForeignKey(OrderMODEL, on_delete=models.CASCADE, null=True, blank=True)
+    # shipment_track_order_id          = models.ForeignKey(OrderMODEL, on_delete=models.CASCADE)
+
     
     class Meta: 
         ordering = ('-shipment_track_order_id',)

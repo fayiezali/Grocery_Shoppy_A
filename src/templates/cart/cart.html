@@ -104,25 +104,21 @@ line.OrderDetails_product.product_image:
 				<hr>
 				</div>			
 				<div class="checkout-left-basket">
-					<li>Current User-ID  :<span>( {{tax_rate_VAR.get_current_user_id_PROPERTY}}       )</span></li>
-					<li>Current User-Name:<span>( {{tax_rate_VAR.get_current_user_username_PROPERTY}} )</span></li>
-					<li>Current User     :<span>( {{order_VAR.get_current_user_PROPERTY}}             )</span></li>
-					<li>Current Order    :<span>( {{order_VAR.get_current_order_PROPERTY}}            )</span></li>
-					<li>------------                          :<span>(----------------------------------------------------)</span></li>
+					<h5>User ID: {{tax_rate_VAR.get_current_user_id_PROPERTY}} </h5>
+					<h5>User Name: {{tax_rate_VAR.get_current_user_username_PROPERTY}} </h5>
+					<h5>Order No.: {{tax_rate_VAR.get_current_order_id_PROPERTY}} </h5>
 					<h4> Checkout </h4>
 					<ul>
 						<li>Order Number                          :<span>( {{order_VAR.get_order_number_PROPERTY}}            )</span></li>
 						<li>Count Of Items                        :<span>( {{order_VAR.get_count_of_items_PROPERTY}}          )</span></li>
 						<li>Quantity Of Products                  :<span>( {{order_VAR.get_quantity_of_products_PROPERTY}}    )</span></li>
 						<li>Tax %             		              :<span>( {{tax_rate_VAR.get_tax_rate_PROPERTY}}             )</span></li>
-						<li>Amount Of Products (Witheout VAT/Tax)order_VAR :<span>( {{order_VAR.get_subtotal_without_tax_PROPERTY}}  )</span></li>
 						<li>Amount Of Products (Witheout VAT/Tax) :<span>( {{tax_rate_VAR.get_amount_of_products_witheout_VAT_Tax_PROPERTY}}    )</span></li>
 						<li>Tax Amount - SR                       :<span>( {{tax_rate_VAR.get_tax_amount_PROPERTY}}           )</span></li>
 						<li>Service Charges - SR                  :<span>( {{tax_rate_VAR.get_service_charges_PROPERTY}}                                          )</span></li>
 						<li>Subtotal (Withe VAT/Tax)              :<span>( {{tax_rate_VAR.get_subtotal_without_tax_PROPERTY}} )</span></li>
 						<li>Discount - SR                         :<span>( {{tax_rate_VAR.get_discount_PROPERTY}}			  )</span></li>
 						<li>GrandTotal - SR(Withe Tax & Discount) :<span>( {{tax_rate_VAR.get_grandtotal_withe_tax_and_discount_PROPERTY}} )</span></li>
-						<li>({{tax_rate_VAR.get_current_user }}) </li>
 
 					</ul>
 				</div>

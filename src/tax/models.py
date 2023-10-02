@@ -6,10 +6,11 @@ from django.contrib.auth import get_user_model
 class Tax_MODEL(models.Model):
     """Django Model for State"""
 
+    tax_user               = models.OneToOneField( User, on_delete=models.SET_NULL, related_name='user_tax_relation',null=True, blank=True , verbose_name="User Tax")
+    tax_order              = models.OneToOneField( OrderMODEL, on_delete=models.SET_NULL, related_name='user_tax_relation',null=True, blank=True , verbose_name="Order Tax")
     tax_rate               = models.DecimalField(max_digits=10,decimal_places=2 , default=15  , blank=True , null=True , verbose_name="Tax %")
     divide_one_hundred     = models.DecimalField(max_digits=10,decimal_places=2 , default=100 , blank=True , null=True , verbose_name="100")
     service_charges        = models.DecimalField(max_digits=10,decimal_places=2 , default=0   , blank=True , null=True , verbose_name="Service Charges")
-    tax_accountant         = models.ForeignKey( User, on_delete=models.CASCADE, related_name='user_tax_accountant',null=True, blank=True , verbose_name="Tax Accountant")
 
     # Create your models here.
     class Meta:
@@ -19,27 +20,37 @@ class Tax_MODEL(models.Model):
     #
     # 'admin'display the field name on a page
     def __str__(self):
-        return str(self.tax_rate)
+        return  'User Name: ' + self.tax_user.username + '-' \
+                'Order Id: ' + str(self.tax_order.id)  + '-' \
+                'Tax Rate: ' + str(self.tax_rate) 
+
+    # def __str__(self):
+    #     return str(self.tax_rate)
     #
     #
+#
     @property
     def get_current_user_id_PROPERTY(self): # 
-        current_user_id_VAR = OrderMODEL.objects.all()
-        for user_id in current_user_id_VAR:
             # 
-            return user_id.order_user.id
+            current_user_id_VAR = self.tax_user.id
+            #
+            return current_user_id_VAR
     #
     #
     @property
     def get_current_user_username_PROPERTY(self): # 
-        current_user_username_VAR = OrderMODEL.objects.all()
-        for user_username in current_user_username_VAR:
             # 
-            return user_username.order_user.username
+            current_user_name_VAR = self.tax_user.username
+            #
+            return current_user_name_VAR
 
 
-    # @property
-    # def get_current_order_PROPERTY(self): # 
+    @property
+    def get_current_order_id_PROPERTY(self): # 
+            #
+            current_order_id_VAR = self.tax_order.id
+            #
+            return current_order_id_VAR
 
 
         # Tax Amount
@@ -72,8 +83,9 @@ class Tax_MODEL(models.Model):
 
         for item in orderitems_VAR:
             # Calculation multiply the price of the product by the quantity
-            products_prices_VAR += item.OrderDetails_price 
+            products_prices_VAR += item.OrderDetails_price * item.OrderDetails_quantity 
         return products_prices_VAR
+    
     #
     # Service Charges
     @property
