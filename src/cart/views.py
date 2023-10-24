@@ -40,6 +40,11 @@ def cart_DEF(request):
             tax_rate_VAR = Tax_MODEL.objects.get()
             # 
             # ============================================================================
+            # tax_rate_VAR = Tax_MODEL.objects.create(
+            # tax_user=request.user , 
+            # tax_order=order_VAR)
+            # print('Was Added To Cart For Old Order.')
+
             # Save User Name & Order Number In Table:Tax_MODER
             Tax_MODEL.objects.update(
                                     tax_user  = request.user  , # User 

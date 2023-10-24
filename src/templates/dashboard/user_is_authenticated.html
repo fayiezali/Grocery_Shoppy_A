@@ -12,10 +12,11 @@
 		<div class="header-bot_inner_wthreeinfo_header_mid">
 			<!-- header-bot-->
 			<h4> Welcome: ( {{user.username}} )</h4>
-
+			
 			<div class="col-md-4 logo_agile">
 				<h1>
 					<a href="{% url 'dashboard-URL' %}">
+						<h4>( {{order_VAR.get_count_of_items_PROPERTY}} )<h4>
 						<span>G</span>rocery
 						<span>S</span>hoppy
 						<img src="{% static 'images/logo2.png' %}" alt=" ">
@@ -81,10 +82,11 @@
 {% comment %} ================================================================================== {% endcomment %}
 				<!-- cart details -->
 				<div class="top_nav_right">
-					<div class="wthreecartaits wthreecartaits2 cart cart box_1">
+					
+					<div class="wthreecartaits wthreecartaits2 cart cart box_1" >
 						<form action="{% url 'cart-URL' %}"  >
-							<button class="w3view-cart" type="submit" name="submit" value="">
-								<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+							<button class="w3view-cart" type="submit" name="submit" value="" >
+								<i class="fa fa-cart-arrow-down" aria-hidden="true"><h4>( {{order_VAR.get_count_of_items_PROPERTY}} )<h4></i>
 							</button>
 						</form>
 					</div>

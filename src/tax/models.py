@@ -3,6 +3,7 @@ from .models import *
 from django.contrib.auth.models import User # إستيراد اسم المستخدم
 from order_orderdetail.models import *
 from django.contrib.auth import get_user_model
+from django.db.models.signals import post_save , post_delete # كلاس فكرته: انه بمجرد تنفيذ عملية الحفظ يقوم مباشرة بتنفيذ عملية اخرى بعده
 class Tax_MODEL(models.Model):
     """Django Model for State"""
 
@@ -20,15 +21,34 @@ class Tax_MODEL(models.Model):
     #
     # 'admin'display the field name on a page
     def __str__(self):
-        return  'User Name: ' + self.tax_user.username + '-' \
-                'Order Id: ' + str(self.tax_order.id)  + '-' \
-                'Tax Rate: ' + str(self.tax_rate) 
+        return  'Tax Rate: ' + str(self.tax_rate) 
+                
+
+    # # 'admin'display the field name on a page
+    # def __str__(self):
+    #     return  'User Name: ' + self.tax_user.username + '-' \
+    #             'Order Id: ' + str(self.tax_order.id)  + '-' \
+    #             'Tax Rate: ' + str(self.tax_rate) 
 
     # def __str__(self):
     #     return str(self.tax_rate)
     #
     #
 #
+    # create_profile: للمستخدم الجديد "profile"دالة تقوم بإنشاء
+    # sender: هي فانكش/دالة تقوم بمتابعة الملف الذي ترتبط به فبمجرد قيام الملف المرتبطة به بحدث ما تقوم بتفيذ الكود الموجود فيها
+    # **kwargs: "Type" وﻻ نوعها "size" فانكش تقوم  بإستقبال المعلومات (المجهولة) التي لايعرف  حجمها
+    # ['created']:الكلمة التي سوف يتم طباعتها إذا تم إستقبال بيانات
+    # user:
+    # ['instance']: هي البيانات التي تسم إستقبالها
+    # post_save:  ""   ""  يتم تنفيذ  حدث اخر بعده  "Save" كلاس فكرته: ان بمجرد تنفيذ عملية الحفظ
+    def create_Tax(sender, **kwargs):
+        if kwargs['created']: #'created' إذا كان هناك بيانات تم إستقبالها اطبع هذه الكلمة
+            Tax_MODEL.objects.create(tax_user=kwargs['instance']) #التي أستقبلتها "'instance'"جديد بناء على  معلومات المستخدم "PersonalData_MODEL" قم بإنشاء ملف
+    # "" "user"والمستخدم  "post_save" الربط بين الفانكشن
+    post_save.connect(create_Tax , sender=User) 
+    #
+    #
     @property
     def get_current_user_id_PROPERTY(self): # 
             # 

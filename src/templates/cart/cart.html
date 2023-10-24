@@ -104,11 +104,12 @@ line.OrderDetails_product.product_image:
 				<hr>
 				</div>			
 				<div class="checkout-left-basket">
-					<h5>User ID: {{tax_rate_VAR.get_current_user_id_PROPERTY}} </h5>
+					{% comment %} <h5>User ID: {{tax_rate_VAR.get_current_user_id_PROPERTY}} </h5>
 					<h5>User Name: {{tax_rate_VAR.get_current_user_username_PROPERTY}} </h5>
-					<h5>Order No.: {{tax_rate_VAR.get_current_order_id_PROPERTY}} </h5>
+					<h5>Order No.: {{tax_rate_VAR.get_current_order_id_PROPERTY}} </h5> {% endcomment %}
 					<h4> Checkout </h4>
 					<ul>
+						<li>Order Number-OrderDetails_VAR         :<span>( {{OrderDetails_VAR.get_order_number_PROPERTY}}            )</span></li>
 						<li>Order Number                          :<span>( {{order_VAR.get_order_number_PROPERTY}}            )</span></li>
 						<li>Count Of Items                        :<span>( {{order_VAR.get_count_of_items_PROPERTY}}          )</span></li>
 						<li>Quantity Of Products                  :<span>( {{order_VAR.get_quantity_of_products_PROPERTY}}    )</span></li>

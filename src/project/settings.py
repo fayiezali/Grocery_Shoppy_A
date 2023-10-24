@@ -32,6 +32,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Theme to change the appearance of the Admin page 
+    # New Look
+    # pip install django-jazzmin
+    'jazzmin', # 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,7 +57,8 @@ INSTALLED_APPS = [
     'search',
     'checkout',
     'tax',  
-]
+    'category',
+] 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
